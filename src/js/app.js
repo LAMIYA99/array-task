@@ -1,119 +1,102 @@
-
-let a = [2, 3, 4, 3, 5, 6, 7, 8, 9, 10, 18, 19, 20];
-function SumNumbers(arr) {
-  let sum = 0;
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
+let nums1 = [2, 3, 4, 3, 5, 6, 8, 10, 18];
+function getArraySum(list) {
+  let total = 0;
+  for (let val of list) {
+    total += val;
   }
-  return sum;
+  return total;
 }
-console.log(SumNumbers(a));
+console.log(getArraySum(nums1));
 
 
-
-let b = [3, 7, 2, 9, 1];
-function theGreatestNumber(arr) {
-  return Math.max(...arr);
+let nums2 = [3, 7, 2, 9, 1];
+function findMaxValue(numbers) {
+  return numbers.reduce((max, current) => current > max ? current : max);
 }
-console.log(theGreatestNumber(b));
+console.log(findMaxValue(nums2));
 
 
-
-let c = [3, 7, 2, 9, 1, 6, 8, 9, 345, 123, 213, 233, 234, 2342];
-function reversedNumbers(arr) {
-  return [...arr].reverse();
+let nums3 = [3, 8, 2, 9, 1, 6, 8, 9, 345, 123, 213, 334, 5342];
+function reverseList(list) {
+  return [...list].reverse();
 }
-console.log(reversedNumbers(c));
+console.log(reverseList(nums3));
 
 
-
-let d = [1, 2, 3, 4, 5, 6];
-function evenNumbers(arr) {
-  return arr.filter(num => num % 2 === 0);
+let nums4 = [1, 2, 3, 4, 5, 6];
+function getEvenNumbers(arr) {
+  return arr.filter(x => x % 2 === 0);
 }
-console.log(evenNumbers(d));
+console.log(getEvenNumbers(nums4));
 
 
-
-let data = { name: "Ali", age: 25, city: "Baku", prof: "dev" };
-function calculateKeys(key) {
-  console.log("Number of keys:", Object.keys(key).length);
+let person = { name: "Ali", age: 25, city: "Baku", prof: "dev" };
+function countKeys(obj) {
+  console.log(Object.keys(obj).length);
 }
-calculateKeys(data);
+countKeys(person);
 
 
-
-let numberValues = { a: 10, b: "hello", c: 20, d: 30 };
-function sumNumberValues(obj) {
+let mixedValues = { a: 10, b: "salam", c: 20, d: 30 };
+function sumNumericProps(obj) {
   return Object.values(obj)
-    .filter(value => typeof value === "number")
-    .reduce((acc, val) => acc + val, 0);
+    .filter(val => typeof val === "number")
+    .reduce((sum, num) => sum + num, 0);
 }
-console.log(sumNumberValues(numberValues));
+console.log(sumNumericProps(mixedValues));
 
 
-
-let sameNumbers = [1, 2, 3, 3, 4, 5, 6, 6, 8, 8, 9, 10, 11, 12, 12, 13, 14];
-function deleteSameNumbers(arr) {
-  return [...new Set(arr)];
+let nums5 = [1, 2, 3, 3, 4, 5, 6, 6, 8, 8, 9, 10, 11, 12, 12, 13, 14];
+function removeDuplicates(list) {
+  return Array.from(new Set(list));
 }
-console.log(deleteSameNumbers(sameNumbers));
+console.log(removeDuplicates(nums5));
 
 
-
-let dataOne = [1, 2, 3, 4, 5, 6];
-let dataTwo = [2, 5, 6, 9, 10, 23];
-function deleteDublicateNumbers(arr1, arr2) {
-  let dublicate = arr1.filter(num => arr2.includes(num));
-  console.log("Dublicate numbers", dublicate);
+let listA = [1, 2, 3, 4, 5, 6];
+let listB = [2, 5, 6, 9, 10, 23];
+function findCommonElements(a, b) {
+  let common = a.filter(x => b.includes(x));
+  console.log(common);
 }
-deleteDublicateNumbers(dataOne, dataTwo);
+findCommonElements(listA, listB);
 
 
-
-let arr9 = [1, 2, 3, 4, 5];
-function evenOrOdd(arr) {
-  let even = arr.filter(num => num % 2 === 0);
-  let odd = arr.filter(num => num % 2 !== 0);
-  console.log("Evens:", even);
-  console.log("Odds:", odd);
+let nums6 = [1, 2, 3, 4, 5];
+function splitEvenOdd(arr) {
+  let even = arr.filter(x => x % 2 === 0);
+  let odd = arr.filter(x => x % 2 !== 0);
+  console.log(even);
+  console.log(odd);
 }
-evenOrOdd(arr9);
+splitEvenOdd(nums6);
 
 
-
-
-
-function fibonacciArray(n) {
-    let fib = [0, 1];
-    for (let i = 2; i < n; i++) {
-      fib.push(fib[i - 1] + fib[i - 2]);
-    }
-    return fib.slice(0, n);
+function makeFibonacci(n) {
+  if (n <= 0) return [];
+  if (n === 1) return [0];
+  let fib = [0, 1];
+  while (fib.length < n) {
+    fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
   }
-  console.log(fibonacciArray(6));
-  
-
-
-let objA = { a: 1, b: 2 };
-let objB = { b: 3, c: 4 };
-function mergedObjects(obj1, obj2) {
-  let result = Object.assign({}, obj1, obj2);
-  console.log(result);
+  return fib;
 }
-mergedObjects(objA, objB);
+console.log(makeFibonacci(6));
 
 
-
-let nums = [0, 1, 0, 3, 12];
-function moveZeroes(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === 0) {
-      arr.splice(i, 1);
-      arr.push(0);
-      i--;
-    }
-  }
-  return arr;
+let obj1 = { a: 1, b: 2 };
+let obj2 = { b: 3, c: 4 };
+function mergeObjects(o1, o2) {
+  let merged = { ...o1, ...o2 };
+  console.log(merged);
 }
-console.log(moveZeroes(nums));
+mergeObjects(obj1, obj2);
+
+
+let nums7 = [0, 1, 0, 3, 12];
+function moveZerosToEnd(arr) {
+  let withoutZero = arr.filter(x => x !== 0);
+  let zeroCount = arr.length - withoutZero.length;
+  return [...withoutZero, ...Array(zeroCount).fill(0)];
+}
+console.log(moveZerosToEnd(nums7));
